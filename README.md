@@ -15,7 +15,21 @@ npm install dev-null-api
 import { DevNull } from "dev-null-api";
 
 const api = new DevNull();
+
+// Get a public user profile.
+const user = await api.users.get("nunomaduro");
+console.log(user);
 ```
+
+## API
+
+### Users
+
+#### `api.users.get(username)`
+
+Retrieve a public user profile.
+
+The username may include a leading `@`. The returned object uses the same field names as the API response.
 
 ## Contributing
 

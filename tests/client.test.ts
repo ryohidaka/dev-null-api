@@ -9,4 +9,8 @@ describe("DevNull", () => {
   it("accepts HTTP client options", () => {
     expect(() => new DevNull({ fetcher: vi.fn<typeof fetch>() })).not.toThrow();
   });
+
+  it("exposes the users resource", () => {
+    expect(new DevNull().users).toBeDefined();
+  });
 });
