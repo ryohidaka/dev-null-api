@@ -1,4 +1,4 @@
 export { DevNull } from "@/client";
-export type { HttpClientOptions } from "@/types";
+export { DevNullApiError, DevNullNetworkError } from "@/errors";
 export { UserResource } from "@/resources/user";
-export type { User } from "@/types";
+export type { HttpClientOptions, User } from "@/types";

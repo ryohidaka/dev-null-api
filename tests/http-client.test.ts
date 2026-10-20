@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vite-plus/test";
+import { DevNullApiError } from "@/errors";
 import { HttpClient } from "@/http/http-client";
 
 describe("HttpClient", () => {
@@ -19,9 +20,11 @@ describe("HttpClient", () => {
   it("throws when the API returns an error status", async () => {
     const fetcher = vi.fn<typeof fetch>().mockResolvedValue(new Response(null, { status: 404 }));
 
-    await expect(new HttpClient({ fetcher }).get("users/missing")).rejects.toThrow(
-      "API request failed with HTTP 404.",
-    );
+    await expect(new HttpClient({ fetcher }).get("users/missing")).rejects.toMatchObject({
+      name: "DevNullApiError",
+      status: 404,
+      message: "API request failed with HTTP 404.",
+    });
   });
 
   it("converts nested snake_case fields and timestamps", async () => {
@@ -42,10 +45,21 @@ describe("HttpClient", () => {
     });
   });
 
-  it("passes through network errors", async () => {
+  it("wraps network errors", async () => {
     const error = new Error("offline");
     const fetcher = vi.fn<typeof fetch>().mockRejectedValue(error);
 
-    await expect(new HttpClient({ fetcher }).get("users/nunomaduro")).rejects.toBe(error);
+    await expect(new HttpClient({ fetcher }).get("users/nunomaduro")).rejects.toMatchObject({
+      name: "DevNullNetworkError",
+      cause: error,
+    });
+  });
+
+  it("throws an API error for invalid JSON", async () => {
+    const fetcher = vi.fn<typeof fetch>().mockResolvedValue(new Response("not json"));
+
+    await expect(new HttpClient({ fetcher }).get("users/nunomaduro")).rejects.toBeInstanceOf(
+      DevNullApiError,
+    );
   });
 });

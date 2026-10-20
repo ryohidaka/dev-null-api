@@ -1,6 +1,6 @@
 import { HttpClient } from "@/http/http-client";
-import type { HttpClientOptions } from "@/types";
 import { UserResource } from "@/resources/user";
+import type { HttpClientOptions } from "@/types";
 
 /** Client for the public dev-null.sh API. */
 export class DevNull {
