@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.5",
+    "@vitest/coverage-v8": "5.0.5",
     "bumpp": "^12.3.0",
     "dev-null-api": "workspace:*",
     "typescript": "^7.0.2",
