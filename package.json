@@ -1,6 +1,6 @@
 {
   "name": "dev-null-api",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "TypeScript client for the public, read-only dev-null.sh API",
   "keywords": [
     "dev-null"
