@@ -9,6 +9,14 @@ No authentication is required.
 npm install dev-null-api
 ```
 
+## Usage
+
+```ts
+import { DevNull } from "dev-null-api";
+
+const api = new DevNull();
+```
+
 ## Contributing
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
