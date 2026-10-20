@@ -1,5 +1,7 @@
 # dev-null-api
 
+[![CI](https://github.com/ryohidaka/dev-null-api/actions/workflows/ci.yml/badge.svg)](https://github.com/ryohidaka/dev-null-api/actions/workflows/ci.yml)
+
 TypeScript client for the public, read-only [dev-null.sh API](https://github.com/nunomaduro/dev-null.sh#public-api).
 No authentication is required.
 
