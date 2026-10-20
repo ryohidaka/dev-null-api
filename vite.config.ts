@@ -1,3 +1,4 @@
+import { fileURLToPath } from "url";
 import { defineConfig } from "vite-plus";
 
 export default defineConfig({
@@ -23,4 +24,9 @@ export default defineConfig({
     },
   },
   fmt: {},
+  resolve: {
+    alias: {
+      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
 });
